@@ -12,9 +12,11 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
-      <Switch>
-        <Route path="/" component={App} />
-      </Switch>
+      <div>
+        <Switch>
+          <Route path="/" component={App} />
+        </Switch>
+      </div>
     </BrowserRouter>
   </Provider>
   , document.querySelector('#root'));
