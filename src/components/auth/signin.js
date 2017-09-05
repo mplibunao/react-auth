@@ -22,10 +22,6 @@ class Signin extends Component {
 
     render(){
         const { handleSubmit, fields } = this.props;
-        const { email, password } = fields;
-        console.log('rpops', this.props)
-        console.log('email->', email);
-        console.log('password->', password);
         return (
             <form onSubmit={handleSubmit(() => this.handleFormSubmit(email, password))}>
                 <Field
