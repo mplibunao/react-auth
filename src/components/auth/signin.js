@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class Signin extends Component {
 
@@ -15,15 +17,16 @@ class Signin extends Component {
         );
     }
 
-    handleFormSubmit(email, password){
-        console.log(email, password);
+    handleFormSubmit = (values) => {
+        console.log('values', values);
         // Need to do something to log user in
     }
 
     render(){
-        const { handleSubmit, fields } = this.props;
+        const { handleSubmit } = this.props;
         return (
-            <form onSubmit={handleSubmit(() => this.handleFormSubmit(email, password))}>
+            // Arrow function causes values not to be found; Either use bind or arrow function like above ^ 
+            <form onSubmit={handleSubmit(this.handleFormSubmit)}>
                 <Field
                     label="Email:"
                     name="email"
@@ -42,5 +45,7 @@ class Signin extends Component {
 
 export default reduxForm({
     form: 'signin',
-    fields: ['email', 'password']
-})(Signin);
+    //fields: ['email', 'password']
+})(
+    connect(null, actions)(Signin)
+);
