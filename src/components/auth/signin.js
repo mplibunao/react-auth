@@ -19,7 +19,9 @@ class Signin extends Component {
 
     handleFormSubmit = (values) => {
         // Need to do something to log user in
-        this.props.signinUser(values);
+        this.props.signinUser(values, () => {
+            this.props.history.push('/feature');
+        });
     }
 
     render(){
