@@ -18,8 +18,8 @@ class Signin extends Component {
     }
 
     handleFormSubmit = (values) => {
-        console.log('values', values);
         // Need to do something to log user in
+        this.props.signinUser(values);
     }
 
     render(){
