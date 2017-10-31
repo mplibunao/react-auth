@@ -21,7 +21,7 @@ export function signinUser({email, password}, callback) {
       dispatch({ type: AUTH_USER })
       localStorage.setItem('token', response.data.token);
       callback();
-    })
+    }) 
     .catch(() => {
       dispatch(authError('Bad Login Info'));
     });
