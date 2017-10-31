@@ -7,8 +7,7 @@ class Header extends Component {
         const { authenticated } = this.props;
         if (authenticated) {
             return [
-                <li key={1} className="nav-item"><Link className="nav-link" to="/signout">Sign Out</Link></li>,
-                <li key={2} className="nav-item"><Link className="nav-link" to="/signup">Sign Up</Link></li>,
+                <li key={1} className="nav-item"><Link className="nav-link" to="/signout">Sign Out</Link></li>
             ];
         }
         return [
