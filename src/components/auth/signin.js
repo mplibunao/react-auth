@@ -24,11 +24,21 @@ class Signin extends Component {
         });
     }
 
+    renderAlert() {
+        const { errorMessage } = this.props;
+        if (errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong>Ooops! </strong> {errorMessage}
+                </div>
+            );
+        }
+    }
+
     render(){
         const { handleSubmit } = this.props;
         return (
             <div>
-                <div>Sign in</div>
                 {/* Arrow function causes values not to be found; Either use bind or arrow function like above ^ */}
                 <form onSubmit={handleSubmit(this.handleFormSubmit)}>
                     <Field
@@ -41,6 +51,7 @@ class Signin extends Component {
                         name="password"
                         component={this.renderField}
                     />
+                    {this.renderAlert()}
                     <button action="submit" className="btn btn-primary">Sign in</button>
                 </form>
             </div>
@@ -48,9 +59,13 @@ class Signin extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return { errorMessage: state.auth.error };
+}
+
 export default reduxForm({
     form: 'signin',
     //fields: ['email', 'password']
 })(
-    connect(null, actions)(Signin)
+    connect(mapStateToProps, actions)(Signin)
 );
