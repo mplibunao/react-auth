@@ -9,24 +9,12 @@ class Signin extends Component {
         return (
             <fieldset className="form-group">
                 <label>{field.label}</label>
-                <input type="text"
+                <input type={field.type}
                     className="form-control"
                     {...field.input}
                 />
             </fieldset>
         );
-    }
-
-    renderPasswordField(field) {
-        return (
-            <fieldset className="form-group">
-                <label>{field.label}</label>
-                <input type="password"
-                    className="form-control"
-                    {...field.input}
-                />
-            </fieldset>
-        )
     }
 
     handleFormSubmit = (values) => {
@@ -56,12 +44,14 @@ class Signin extends Component {
                     <Field
                         label="Email:"
                         name="email"
+                        type="text"
                         component={this.renderField}
                     />
                     <Field
                         label="Password:"
                         name="password"
-                        component={this.renderPasswordField}
+                        type="password"
+                        component={this.renderField}
                     />
                     {this.renderAlert()}
                     <button action="submit" className="btn btn-primary">Sign in</button>
