@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import Header from "../header";
 
 class Signin extends Component {
 
@@ -39,6 +40,7 @@ class Signin extends Component {
         const { handleSubmit } = this.props;
         return (
             <div>
+                <Header />
                 {/* Arrow function causes values not to be found; Either use bind or arrow function like above ^ */}
                 <form onSubmit={handleSubmit(this.handleFormSubmit)}>
                     <Field
