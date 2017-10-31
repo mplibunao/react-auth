@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AUTH_USER } from './types'; 
 
 const ROOT_URL = 'http://localhost:3090';
 
@@ -17,6 +18,8 @@ export function signinUser({email, password}, callback) {
        *  - Save the JWT Token
        *  - Redirect to route '/feature
        */
+        dispatch({ type: AUTH_USER })
+        
         callback();
       })
       .catch(() => {

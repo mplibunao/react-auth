@@ -27,20 +27,23 @@ class Signin extends Component {
     render(){
         const { handleSubmit } = this.props;
         return (
-            // Arrow function causes values not to be found; Either use bind or arrow function like above ^ 
-            <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-                <Field
-                    label="Email:"
-                    name="email"
-                    component={this.renderField}
-                />
-                <Field
-                    label="Password:"
-                    name="password"
-                    component={this.renderField}
-                />
-                <button action="submit" className="btn btn-primary">Sign in</button>
-            </form>
+            <div>
+                <div>Sign in</div>
+                {/* Arrow function causes values not to be found; Either use bind or arrow function like above ^ */}
+                <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+                    <Field
+                        label="Email:"
+                        name="email"
+                        component={this.renderField}
+                    />
+                    <Field
+                        label="Password:"
+                        name="password"
+                        component={this.renderField}
+                    />
+                    <button action="submit" className="btn btn-primary">Sign in</button>
+                </form>
+            </div>
         );
     }
 }
