@@ -3,14 +3,20 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
-    render(){
+    renderLinks() {
         const { authenticated } = this.props;
-        const showHeader = authenticated ? <li className="nav-item">Welcome!</li> : <li className="nav-item"><Link to="/signin">Sign in</Link></li>;
+        if (authenticated) {
+            return <li className="nav-item"><Link to="/signout">Sign Out</Link></li>;
+        }
+        return <li className="nav-item"><Link to="/signin">Sign in</Link></li>;
+    }
+
+    render(){
         return (
             <nav className="navbar navbar-light">
                 <Link to="/" className="navbar-brand">Home</Link>
                 <ul className="nav navbar-nav">
-                    {showHeader}
+                    {this.renderLinks()}
                 </ul>
             </nav>
         );
