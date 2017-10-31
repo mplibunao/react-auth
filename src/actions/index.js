@@ -19,7 +19,7 @@ export function signinUser({email, password}, callback) {
        *  - Redirect to route '/feature
        */
         dispatch({ type: AUTH_USER })
-        
+        localStorage.setItem('token', response.data.token);
         callback();
       })
       .catch(() => {
