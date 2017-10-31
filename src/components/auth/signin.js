@@ -17,6 +17,18 @@ class Signin extends Component {
         );
     }
 
+    renderPasswordField(field) {
+        return (
+            <fieldset className="form-group">
+                <label>{field.label}</label>
+                <input type="password"
+                    className="form-control"
+                    {...field.input}
+                />
+            </fieldset>
+        )
+    }
+
     handleFormSubmit = (values) => {
         // Need to do something to log user in
         this.props.signinUser(values, () => {
@@ -49,7 +61,7 @@ class Signin extends Component {
                     <Field
                         label="Password:"
                         name="password"
-                        component={this.renderField}
+                        component={this.renderPasswordField}
                     />
                     {this.renderAlert()}
                     <button action="submit" className="btn btn-primary">Sign in</button>
