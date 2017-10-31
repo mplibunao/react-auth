@@ -14,7 +14,6 @@ class Signout extends Component {
                 <Header />
                 <div>Sorry to see you go...</div>
             </div>
-            
         );
     }
 }
