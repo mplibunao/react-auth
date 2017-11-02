@@ -74,13 +74,18 @@ function validate(values) {
         errors.password = "Please enter a password";
     } else if (password.length < 4) {
         errors.password = "Password must be longer than 3 characters";
-    } else if ( password.search(/\d/g) === false || password.search(/[A-z]/g) === false ) {
+    } else if ( /\d/g.test(password) === false || /[A-z]/g.test(password) === false ) {
         errors.password = "Password must be alphanumeric";
-    } else if ( password.search(/\s/g) === true ) {
+    } else if (/\s/g.test(password)) {
         errors.password = "Password must not contain any whitespace";
     }
 
-
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;    
+    if (!email) {
+        errors.email = "Please enter an email address";
+    } else if (emailRegex.test(email) === false) {
+        errors.email = "Please enter a valid email address";
+    }
     
     // Return errors object; If empty, then show no validation error, else show the validation error
     // for a particular field corresponding to the field `name`
