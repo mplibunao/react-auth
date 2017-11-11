@@ -7,7 +7,7 @@ import "../../styles/index.css";
 class Signup extends Component {
 
     handleFormSubmit(values) {
-        
+        console.log('values: ', values);
     }
     
     renderField(field) {
@@ -28,10 +28,11 @@ class Signup extends Component {
     }
 
     render() {
+        const { handleSubmit } = this.props;
         return (
             <div>
                 <Header />
-                <form>
+                <form onSubmit={handleSubmit((values) => this.handleFormSubmit(values))  }>
                     <Field label="Email:"
                         name="email"
                         type="text"
