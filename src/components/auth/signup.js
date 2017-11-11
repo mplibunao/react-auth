@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
+import { connect } from "react-redux";
 import * as actions from "../../actions";
 import Header from "../header";
 import "../../styles/index.css";
@@ -83,7 +84,8 @@ function validate(values) {
         errors.password = "Password must not contain any whitespace";
     }
 
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;    
+    // eslint-disable-next-line
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!email) {
         errors.email = "Please enter an email address";
     } else if (emailRegex.test(email) === false) {
@@ -98,4 +100,4 @@ function validate(values) {
 export default reduxForm({
     validate,
     form: "signup",
-})(Signup);
+})(connect(null, actions)(Signup));
