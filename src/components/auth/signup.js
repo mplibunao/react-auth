@@ -9,7 +9,7 @@ class Signup extends Component {
 
     handleFormSubmit(values) {
         this.props.signupUser(values, () => {
-            this.props.history.push("/");
+            this.props.history.push("/feature");
         });
     }
     
@@ -28,6 +28,16 @@ class Signup extends Component {
                 </div>
             </div>
         );
+    }
+
+    renderAlert() {
+        if (this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong>Ooops!</strong> {this.props.errorMessage}
+                </div>
+            );
+        }
     }
 
     render() {
@@ -51,6 +61,7 @@ class Signup extends Component {
                         type="password"
                         component={this.renderField}
                     />
+                    {this.renderAlert()}
                     <button action="submit" className="btn btn-primary">Sign up!</button>
                 </form>
             </div>
@@ -97,7 +108,13 @@ function validate(values) {
     return errors;
 } 
 
+function mapStateToProps(state) {
+    return {
+        errorMessage: state.auth.error
+    };
+}
+
 export default reduxForm({
     validate,
     form: "signup",
-})(connect(null, actions)(Signup));
+})(connect(mapStateToProps, actions)(Signup));
