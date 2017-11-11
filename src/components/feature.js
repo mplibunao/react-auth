@@ -12,10 +12,16 @@ class Feature extends Component {
         return (
             <div>
                 <Header />
-                <div>This is a feature</div>
+                <div>{this.props.message}</div>
             </div>
         )
     }
 }
 
-export default connect(null, actions)(Feature);
+function mapStateToProps(state) {
+    return {
+        message: state.auth.message
+    };
+}
+
+export default connect(mapStateToProps, actions)(Feature);
