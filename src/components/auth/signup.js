@@ -7,7 +7,9 @@ import "../../styles/index.css";
 class Signup extends Component {
 
     handleFormSubmit(values) {
-        console.log('values: ', values);
+        this.props.signupUser(values, () => {
+            this.props.history.push("/");
+        });
     }
     
     renderField(field) {

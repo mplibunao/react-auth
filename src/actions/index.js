@@ -32,6 +32,12 @@ export function signinUser({email, password}, callback) {
   }
 }
 
+export function signupUser({ email, password }, callback) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signup`, { email, password});
+  }
+}
+
 export function authError(error) {
   return {
     type: AUTH_ERROR,
